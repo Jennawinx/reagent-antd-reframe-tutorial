@@ -1,0 +1,14 @@
+{:source-paths ["src"]
+ :dependencies [[binaryage/devtools "1.0.3"]
+                [nrepl "0.8.3"]
+                [reagent "1.1.0"]
+                [syn-antd "4.13.1"]]
+
+ :builds       {:app {:target     :browser
+                      :output-dir "public/js"
+                      :asset-path "/js"
+                      :modules    {:app {:entries [reagent-frontend-app.core]}}
+                      :devtools   {:after-load reagent-frontend-app.core/mount-root}}}
+
+ :dev-http     {3000 {:root    "public"
+                      :handler user/app}}}
