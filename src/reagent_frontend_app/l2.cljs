@@ -30,8 +30,8 @@
 
 (def state
   (r/atom {:tags  [["bug" "red"] ["feature" "geekblue"]]
-           :lanes ["Todo" "Todo Today"]
-           :cards {"Todo"       []
+           #_#_:lanes ["Todo" "Todo Today"]
+           #_#_:cards {"Todo"       []
                    "Todo Today" []}}))
 
 (defn show-tags []
@@ -78,7 +78,7 @@
 
 (defn home-page []
   [:div
-   [:h2 "Mini Trello"]
+   [:h2 "Tag Editor"]
    [tag-editor]])
 
 
