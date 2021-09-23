@@ -2,6 +2,7 @@
  :dependencies [[binaryage/devtools "1.0.3"]
                 [nrepl "0.8.3"]
                 [reagent "1.1.0"]
+                [re-frame "1.2.0"]
                 [syn-antd "4.13.1"]
                 [cljs-ajax "0.7.5"]]
 

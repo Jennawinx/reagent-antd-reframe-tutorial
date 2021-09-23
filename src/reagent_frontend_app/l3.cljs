@@ -74,6 +74,14 @@
             [:li
              [:p (get-in @state [:facts idx "fact"])]])))
 
+;; De-refing in the loop head is fine 
+#_(defn facts-list []
+    [:ol
+     (for [{:strs [fact length]} (get @state :facts)]
+       ^{:key fact}
+       [:li
+        [:p fact]])])
+
 ;; Example of seperate branch keying
 ;; Error "Every element in a seq should have a unique :key"
 #_(defn facts-list []
@@ -109,7 +117,7 @@
       ;; dataSource takes in a vector of strings or a vector of maps
       ;; NOTE: dataSource is the only field required to be in camelBack notation from syn-antd
       :dataSource  (get @state :facts)
-      :loading     (nil? facts)
+      :loading     (empty? facts)
       ;; renderItem expects  (item) -> ReactNode
       :renderItem  (fn [item] 
                      ;; maps and structures provided by ANTD functions will be in js 
@@ -121,7 +129,7 @@
                      (r/as-element
                       [list/list-item 
                        ;; can use js interop to access value. 
-                       ;; However, shadow-cljs will complain as the method is only avaliable at runtime
+                       ;; However, shadow-cljs will complain as the field is only avaliable at runtime
                        [:p (.-fact item)]]))}]))
 
 ;; How to make a http call
